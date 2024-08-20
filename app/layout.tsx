@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils/ui/client';
 import { env } from '@/lib/utils/t3/env';
 
 import './globals.css';
+import { ThemeProvider } from '@/components/providers/theme-provider';
 
 interface IRootLayoutProps {
   readonly children: React.ReactNode;
@@ -26,16 +27,21 @@ export const metadata = {
 function RootLayout({ children }: IRootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          'min-h-screen bg-background text-foreground font-sans antialiased',
-          fontSans.variable,
-        )}
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
       >
-        <main className="min-h-screen flex flex-col items-center">
+        <body
+          className={cn(
+            'min-h-screen bg-background text-foreground font-sans antialiased',
+            fontSans.variable,
+          )}
+        >
           {children}
-        </main>
-      </body>
+        </body>
+      </ThemeProvider>
     </html>
   );
 }
