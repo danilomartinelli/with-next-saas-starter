@@ -6,6 +6,7 @@ const config = {
   content: [
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
+    './stories/**/*.{ts,tsx}',
 	],
   prefix: "",
   theme: {

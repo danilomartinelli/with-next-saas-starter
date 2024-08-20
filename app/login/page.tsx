@@ -1,14 +1,18 @@
 import Link from "next/link";
 import { headers } from "next/headers";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { SubmitButton } from "./submit-button";
+import SubmitButton from "./_components/submit-button";
 
-export default function Login({
+interface ILoginPageProps {
+  readonly searchParams: {
+    message: string;
+  };
+}
+
+function Login({
   searchParams,
-}: {
-  searchParams: { message: string };
-}) {
+}: ILoginPageProps) {
   const signIn = async (formData: FormData) => {
     "use server";
 
@@ -117,3 +121,5 @@ export default function Login({
     </div>
   );
 }
+
+export default Login;
