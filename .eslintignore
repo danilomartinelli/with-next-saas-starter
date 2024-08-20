@@ -1,0 +1,8 @@
+.storybook/
+components/ui
+docker/
+lib/api/database.types.ts
+node_modules/
+scripts/
+stories/
+supabase/
