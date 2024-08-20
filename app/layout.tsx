@@ -1,9 +1,20 @@
-import { GeistSans } from "geist/font/sans";
+import { Inter as FontSans } from "next/font/google"
+import { cn } from "@/lib/utils/ui/client";
+
 import "./globals.css";
+
+interface IRootLayoutProps {
+  readonly children: React.ReactNode;
+}
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
@@ -11,14 +22,15 @@ export const metadata = {
   description: "The fastest way to build apps with Next.js and Supabase",
 };
 
-export default function RootLayout({
+function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: IRootLayoutProps) {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="bg-background text-foreground">
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn(
+          "min-h-screen bg-background text-foreground font-sans antialiased",
+          fontSans.variable
+        )}>
         <main className="min-h-screen flex flex-col items-center">
           {children}
         </main>
@@ -26,3 +38,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+export default RootLayout;
