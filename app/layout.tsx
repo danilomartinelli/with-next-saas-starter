@@ -1,5 +1,6 @@
 import { Inter as FontSans } from 'next/font/google';
 import { cn } from '@/lib/utils/ui/client';
+import { env } from '@/lib/utils/t3/env';
 
 import './globals.css';
 
@@ -7,8 +8,8 @@ interface IRootLayoutProps {
   readonly children: React.ReactNode;
 }
 
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
+const defaultUrl = env.VERCEL_URL
+  ? `https://${env.VERCEL_URL}`
   : 'http://localhost:3000';
 
 const fontSans = FontSans({
