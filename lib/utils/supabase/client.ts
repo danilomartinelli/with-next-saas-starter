@@ -1,5 +1,5 @@
-import { Database } from "@/lib/api/database.types";
-import { createBrowserClient } from "@supabase/ssr";
+import { Database } from '@/lib/api/database.types';
+import { createBrowserClient } from '@supabase/ssr';
 
 export const createClient = () =>
   createBrowserClient<Database>(

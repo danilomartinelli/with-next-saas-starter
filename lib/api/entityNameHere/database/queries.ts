@@ -1,5 +1,5 @@
-import { SupabaseClient } from "@/lib/types/supabase-client";
-import { ENTITY_TABLE } from "../../database.tables";
+import { SupabaseClient } from '@/lib/types/supabase-client';
+import { ENTITY_TABLE } from '../../database.tables';
 
 /**
  * @name getEntityFromQueryAction
@@ -7,8 +7,5 @@ import { ENTITY_TABLE } from "../../database.tables";
  * @param client
  */
 export function getEntityFromQueryAction(client: SupabaseClient) {
-  return client
-    .from(ENTITY_TABLE)
-    .select("*")
-    .throwOnError();
+  return client.from(ENTITY_TABLE).select('*').throwOnError();
 }
