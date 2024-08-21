@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "lint": "next lint",
+    "lint": "cross-env DOTENV_CONFIG_PATH=./docker/.env node -r dotenv/config ./node_modules/.bin/next lint",
     "dev": "cross-env DOTENV_CONFIG_PATH=./docker/.env node -r dotenv/config ./node_modules/.bin/next dev",
     "build": "next build",
     "start": "next start",
