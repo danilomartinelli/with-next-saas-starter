@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "lint": "next lint",
-    "dev": "next dev",
+    "dev": "cross-env DOTENV_CONFIG_PATH=./docker/.env node -r dotenv/config ./node_modules/.bin/next dev",
     "build": "next build",
     "start": "next start",
     "storybook": "storybook dev -p 6006",
@@ -102,6 +102,7 @@
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
     "@types/three": "^0.167.1",
+    "cross-env": "^7.0.3",
     "encoding": "^0.1.13",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.5",

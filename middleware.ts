@@ -15,10 +15,13 @@ export async function middleware(request: NextRequest) {
   return await updateSession(request, response);
 }
 
-const localesPattern = c.localization.locales
-  .map((locale) => `/${locale}/:path*`)
-  .join('|');
-
 export const config = {
-  matcher: [`/`, localesPattern],
+  matcher: [
+    '/',
+    // Match routes that have a locale prefix - Currently only 'en' is supported.
+    // `config.matcher` can't contain a dynamic expression like `/:locale(functionHere())/:path*`
+    // If you add a new locale in `config.localization.locales`, you need to add it here. Example:
+    // '/:locale(en|es|pt)/:path*',
+    '/:locale(en)/:path*',
+  ],
 };
