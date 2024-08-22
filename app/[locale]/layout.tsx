@@ -13,17 +13,13 @@ interface IRootLayoutProps {
   readonly params: { locale: string };
 }
 
-const defaultUrl = env.VERCEL_URL
-  ? `https://${env.VERCEL_URL}`
-  : 'http://localhost:3000';
-
 const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans',
 });
 
 export const metadata = {
-  metadataBase: new URL(defaultUrl),
+  metadataBase: new URL(config.siteUrl),
   title: config.metadata.title,
   description: config.metadata.description,
 };

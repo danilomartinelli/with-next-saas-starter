@@ -1,4 +1,10 @@
+import { env } from './utils/t3/env';
+
+// You can remove the `vercelUrl` variable if you don't use Vercel
+const vercelUrl = env.VERCEL_URL ? `https://${env.VERCEL_URL}` : undefined;
+
 export const config = {
+  siteUrl: vercelUrl || env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   metadata: {
     title: 'Next.js and Supabase Starter Kit',
     description: 'The fastest way to build apps with Next.js and Supabase',
