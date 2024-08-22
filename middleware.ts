@@ -21,7 +21,7 @@ export const config = {
     // Match routes that have a locale prefix - Currently only 'en' is supported.
     // `config.matcher` can't contain a dynamic expression like `/:locale(functionHere())/:path*`
     // If you add a new locale in `config.localization.locales`, you need to add it here. Example:
-    // '/:locale(en|es|pt)/:path*',
-    '/:locale(en)/:path*',
+    // '/:locale(en_US|pt_BR|locale_with_underscore)/:path*',
+    '/:locale(en_US|pt_BR)/:path*',
   ],
 };

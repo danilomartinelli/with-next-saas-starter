@@ -6,6 +6,7 @@ import { env } from '@/lib/utils/t3/env';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 
 import '../globals.css';
+import { config } from '@/lib/config';
 
 interface IRootLayoutProps {
   readonly children: React.ReactNode;
@@ -23,8 +24,8 @@ const fontSans = FontSans({
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: 'Next.js and Supabase Starter Kit',
-  description: 'The fastest way to build apps with Next.js and Supabase',
+  title: config.metadata.title,
+  description: config.metadata.description,
 };
 
 async function RootLayout({ children, params: { locale } }: IRootLayoutProps) {

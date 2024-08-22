@@ -1,0 +1,14 @@
+{
+  "HomePage": {
+    "title": "Olá mundo!"
+  },
+  "EmailTemplates": {
+    "ExampleEmailTemplate": {
+      "title": "Example Email Template",
+      "subtitle": "This is an example email template.",
+      "name": "Name: {name}",
+      "email": "Email: {email}",
+      "message": "Message: {message}"
+    }
+  }
+}
