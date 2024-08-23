@@ -2,11 +2,20 @@ import { Inter as FontSans } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { cn } from '@/lib/utils/ui/client';
-import { env } from '@/lib/utils/t3/env';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 
 import '../globals.css';
 import { config } from '@/lib/config';
+import { PHProvider } from '@/components/providers/ph-provider';
+import dynamic from 'next/dynamic';
+
+// PostHogPageView contains the useSearchParams hook
+// which deopts the entire app into client-side rendering
+// if it is not dynamically imported.
+// Docs: https://nextjs.org/docs/messages/deopted-into-client-rendering
+const PostHogPageView = dynamic(() => import('./_components/ph-page-view'), {
+  ssr: false,
+});
 
 interface IRootLayoutProps {
   readonly children: React.ReactNode;
@@ -31,23 +40,26 @@ async function RootLayout({ children, params: { locale } }: IRootLayoutProps) {
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <body
-          className={cn(
-            'min-h-screen bg-background text-foreground font-sans antialiased',
-            fontSans.variable,
-          )}
+      <PHProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
         >
-          <NextIntlClientProvider messages={messages}>
-            {children}
-          </NextIntlClientProvider>
-        </body>
-      </ThemeProvider>
+          <body
+            className={cn(
+              'min-h-screen bg-background text-foreground font-sans antialiased',
+              fontSans.variable,
+            )}
+          >
+            <NextIntlClientProvider messages={messages}>
+              <PostHogPageView />
+              {children}
+            </NextIntlClientProvider>
+          </body>
+        </ThemeProvider>
+      </PHProvider>
     </html>
   );
 }
