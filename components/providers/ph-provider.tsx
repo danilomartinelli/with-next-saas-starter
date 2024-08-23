@@ -29,6 +29,7 @@ export function PHProvider({ children }: IPHProviderProps) {
       api_host: host,
       person_profiles: 'identified_only',
       capture_pageview: false,
+      capture_pageleave: true,
     });
 
     isPostHogInitialized.current = true;

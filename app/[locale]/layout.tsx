@@ -8,6 +8,7 @@ import '../globals.css';
 import { config } from '@/lib/config';
 import { PHProvider } from '@/components/providers/ph-provider';
 import dynamic from 'next/dynamic';
+// import PostHogClient from '@/lib/utils/posthog/server';
 
 // PostHogPageView contains the useSearchParams hook
 // which deopts the entire app into client-side rendering
@@ -37,6 +38,13 @@ async function RootLayout({ children, params: { locale } }: IRootLayoutProps) {
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
+
+  // Example of how to use PostHog with Server-Side Rendering
+  // const posthog = PostHogClient(); // If PostHog is not configured, this will throw an error
+  // const flags = await posthog.getAllFlags(
+  //   'user_distinct_id', // replace with a user's distinct ID
+  // );
+  // await posthog.shutdown();
 
   return (
     <html lang={locale} suppressHydrationWarning>
