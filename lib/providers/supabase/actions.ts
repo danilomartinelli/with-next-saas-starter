@@ -44,16 +44,16 @@ export async function signUp(formData: FormData) {
   redirect('/');
 }
 
-export async function me() {
+export async function getSession() {
   const supabase = createClient();
 
-  const {
-    data: { user: currentUser },
-  } = await supabase.auth.getUser();
-
-  if (!currentUser) {
-    return redirect('/login');
+  try {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    return session;
+  } catch (error) {
+    console.error('Error fetching session:', error);
+    return null;
   }
-
-  return currentUser;
 }

@@ -4,7 +4,7 @@ import { useFormStatus } from 'react-dom';
 import { type ComponentProps } from 'react';
 
 interface ISubmitButtonProps extends ComponentProps<'button'> {
-  pendingText?: string;
+  readonly pendingText?: string;
 }
 
 export function SubmitButton({

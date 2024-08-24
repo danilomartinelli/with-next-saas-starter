@@ -1,9 +1,22 @@
+import { redirect } from 'next/navigation';
+import { getSession } from '@/lib/providers/supabase/actions';
+import { useUserStore } from '@/lib/stores/user-store';
+
 interface IProtectedLayoutProps {
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 }
 
 async function ProtectedLayout({ children }: IProtectedLayoutProps) {
-  const { isAuthenticated } = useAuth();
-  
-  return isAuthenticated ? children : <Redirect to="/login" />;
+  const session = await getSession();
+
+  if (!session) {
+    return redirect('/login');
+  }
+
+  // Hydrate the Zustand store on the server
+  useUserStore.setState({ session, user: session.user });
+
+  return <>{children}</>;
 }
+
+export default ProtectedLayout;

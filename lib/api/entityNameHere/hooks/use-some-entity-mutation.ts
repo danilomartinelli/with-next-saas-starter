@@ -1,7 +1,6 @@
-import useSupabase from '@/lib/hooks/use-supabase';
-import {} from '@/lib/utils/supabase/client';
 import useSWR from 'swr';
 import { getEntityFromQueryAction } from '../database/queries';
+import useSupabase from '@/lib/providers/supabase/hooks/use-supabase';
 
 /**
  * @name useSomeEntityQuery
