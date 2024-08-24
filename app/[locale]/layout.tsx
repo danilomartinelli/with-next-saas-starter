@@ -8,6 +8,7 @@ import '../globals.css';
 import { config } from '@/lib/config';
 import { PHProvider } from '@/components/providers/ph-provider';
 import dynamic from 'next/dynamic';
+// You need to import the PostHogClient from the correct path for server-side rendering
 // import PostHogClient from '@/lib/utils/posthog/server';
 
 // PostHogPageView contains the useSearchParams hook

@@ -5,7 +5,7 @@ import { getEntityFromQueryAction } from '../database/queries';
 
 /**
  * @name useSomeEntityQuery
- * @description Hook to update an organization's general information (name, logo and timezone)
+ * @description Hook to do something with some entity.
  */
 function useSomeEntityQuery() {
   const client = useSupabase();
