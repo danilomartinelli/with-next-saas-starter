@@ -19,7 +19,7 @@ const PostHogPageView = dynamic(() => import('./_components/ph-page-view'), {
   ssr: false,
 });
 
-interface IRootLayoutProps {
+interface IHomeLayoutProps {
   readonly children: React.ReactNode;
   readonly params: { locale: string };
 }
@@ -35,7 +35,7 @@ export const metadata = {
   description: config.metadata.description,
 };
 
-async function RootLayout({ children, params: { locale } }: IRootLayoutProps) {
+async function HomeLayout({ children, params: { locale } }: IHomeLayoutProps) {
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
@@ -73,4 +73,4 @@ async function RootLayout({ children, params: { locale } }: IRootLayoutProps) {
   );
 }
 
-export default RootLayout;
+export default HomeLayout;

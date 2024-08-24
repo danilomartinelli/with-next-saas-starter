@@ -20,7 +20,11 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      // We can use now the "default" import for the next navigation API using a custom API
+      "next/link": ["./lib/utils/next-intl/navigation.ts"],
+      "next/router": ["./lib/utils/next-intl/navigation.ts"],
+      "next/navigation": ["./lib/utils/next-intl/navigation.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
