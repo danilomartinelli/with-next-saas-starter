@@ -121,5 +121,10 @@
   "prettier": {
     "singleQuote": true,
     "printWidth": 80
-  }
+  },
+  "trustedDependencies": [
+    "@sentry/cli",
+    "@tsparticles/engine",
+    "core-js-pure"
+  ]
 }
