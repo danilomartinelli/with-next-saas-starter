@@ -5,6 +5,7 @@ export const env = createEnv({
   server: {
     VERCEL_URL: z.string().url().optional(),
     RESEND_API_KEY: z.string().optional(),
+    SENTRY_AUTH_TOKEN: z.string().optional(),
   },
   client: {
     NEXT_PUBLIC_SITE_URL: z.string().url(),
